@@ -1,3 +1,20 @@
-aside{
-    width: 64px;
+#asides{
+    transition: 0.3s linear;
 }
+#asides.open-aside{
+    width: 25vh;
+    height: auto;
+    transition: 0.3s linear;
+}
+
+#search{
+    display: none;
+
+}
+#search.openSearch{
+    display: flex;
+}
+#closeBtn,.label{
+    display: none;
+}
+
