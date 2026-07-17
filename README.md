@@ -1,4 +1,4 @@
-✨ Key Features
+✨ Features
 Detailed Movie Cards: View essential movie info, including genre, year, runtime, director, and a brief synopsis.
 
 Categorized Browsing: Easily find content under sections like "Recently Added" and "Top Rated."
@@ -9,7 +9,7 @@ Dynamic Interactions: Powered by modern JavaScript to deliver a smooth and respo
 
 Modern UI: Styled with a sleek, responsive design using Tailwind CSS that looks great on both mobile and desktop screens.
 
-🛠️ Technologies Used
+🛠️ Tech Stack
 HTML5: Semantic markup structure of the web pages.
 
 Tailwind CSS: Utility-first CSS framework used for rapid UI development, responsive layouts, and modern styling.
@@ -18,6 +18,7 @@ JavaScript (ES6+): Powers the dynamic behaviors, DOM manipulation, and interacti
 
 GitHub Pages: Used for hosting and deployment.
 
-The UI/UX design and layout structure for this project were inspired by a free resource from the Figma Community:
+🎯 Credits & Inspiration
+Layout design credit: https://www.figma.com/design/XVKhl4yI1Y3ye7eVxIZeKE/Video-Streaming-Website---Responsive-web-app-prototype--Community-?node-id=602-227&t=WJ8jTuigDouvsoyP-0
 
-Original Design: Video Streaming Website - Responsive web app prototype by the Figma Community.
+Note: This project is a front-end practicing and portfolio piece to improve my HTML, Tailwind CSS, and JavaScript skills.
