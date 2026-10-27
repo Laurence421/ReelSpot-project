@@ -1,20 +1,49 @@
 #asides{
-    transition: 0.3s linear;
+    width: 6.25rem;
+    transition: width 0.3s linear, transform 0.3s linear;
 }
 #asides.open-aside{
-    width: 25vh;
-    height: auto;
-    transition: 0.3s linear;
+    width: 15rem;
 }
 
 #search{
     display: none;
-
 }
-#search.openSearch{
-    display: flex;
+#asides.open-aside #search{
+    display: block;
 }
 #closeBtn,.label{
     display: none;
 }
+#asides.open-aside #closeBtn{
+    display: flex;
+}
+#asides.open-aside .label{
+    display: block;
+}
 
+/* Mobile: the sidebar becomes a slide-in drawer */
+@media (max-width: 767px){
+    #asides{
+        width: 16rem;
+        transform: translateX(-100%);
+    }
+    #asides.open-aside{
+        width: 16rem;
+        transform: translateX(0);
+    }
+}
+
+.nav-item.active{
+    color: #FF4E4E;
+}
+
+.fav-btn.is-fav{
+    background: #FF4E4E;
+    color: #fff;
+}
+
+.movie-card.selected img{
+    outline: 2px solid #FF4E4E;
+    outline-offset: 2px;
+}
