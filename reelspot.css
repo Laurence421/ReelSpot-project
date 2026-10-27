@@ -50,7 +50,18 @@
     color: #fff;
 }
 
-.movie-card.selected img{
-    outline: 2px solid #FF4E4E;
-    outline-offset: 2px;
+
+/* Browse page: selected list tab / genre chip */
+.chip-active{
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* Swipeable chip rows on phones */
+.no-scrollbar{
+    scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar{
+    display: none;
 }

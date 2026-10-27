@@ -1,76 +1,6 @@
-// ---------- Movie data ----------
-// lists: which grids the movie appears in ("recent", "top")
-const movies = [
-  { id: 'avatar', title: 'Avatar: Fire and Ash', poster: './img/avatar.jpg', genre: 'Sci-Fi, Adventure, Action', year: 2025, runtime: 197,
-    synopsis: "Jake Sully and Neytiri's family face a new threat on Pandora: the aggressive Ash People, a Na'vi clan led by the fierce Varang.",
-    director: 'James Cameron', cast: 'Sam Worthington, Zoe Saldaña, Sigourney Weaver, Stephen Lang, Oona Chaplin', lists: ['recent'] },
-  { id: 'coco', title: 'Coco', poster: './img/coco.jpg', genre: 'Animation, Family, Fantasy', year: 2017, runtime: 105,
-    synopsis: 'Aspiring musician Miguel enters the colorful Land of the Dead to find his great-great-grandfather, a legendary singer.',
-    director: 'Lee Unkrich', cast: 'Anthony Gonzalez, Gael García Bernal, Benjamin Bratt, Alanna Ubach', lists: ['recent', 'top'] },
-  { id: 'fastx', title: 'Fast X', poster: './img/f10.jpg', genre: 'Action, Crime, Thriller', year: 2023, runtime: 141,
-    synopsis: "Dom Toretto and his family are targeted by Dante Reyes, the vengeful son of a drug lord they took down years ago.",
-    director: 'Louis Leterrier', cast: 'Vin Diesel, Michelle Rodriguez, Jason Momoa, Tyrese Gibson, John Cena', lists: ['recent'] },
-  { id: 'furiosa', title: 'Furiosa: A Mad Max Saga', poster: './img/furiosa.jpg', genre: 'Action, Adventure, Sci-Fi', year: 2024, runtime: 148,
-    synopsis: 'Snatched from the Green Place of Many Mothers, young Furiosa falls into the hands of the warlord Dementus and fights to find her way home.',
-    director: 'George Miller', cast: 'Anya Taylor-Joy, Chris Hemsworth, Tom Burke', lists: ['recent'] },
-  { id: 'goodboys', title: 'Good Boys', poster: './img/goodboys.jpg', genre: 'Comedy', year: 2019, runtime: 90,
-    synopsis: 'Three sixth-grade best friends skip school and set off on an epic journey to replace a drone they broke.',
-    director: 'Gene Stupnitsky', cast: 'Jacob Tremblay, Keith L. Williams, Brady Noon', lists: ['recent'] },
-  { id: 'gandhitalks', title: 'Gandhi Talks', poster: './img/grandhitalks.jpg', genre: 'Comedy, Drama', year: 2026,
-    synopsis: 'A silent dark comedy in which money, and the faces printed on it, speak louder than words.',
-    director: 'Kishor Pandurang Belekar', cast: 'Vijay Sethupathi, Arvind Swamy, Aditi Rao Hydari, Siddharth Jadhav', lists: ['recent'] },
-  { id: 'hexed', title: 'Hexed', poster: './img/hexed.jpg', genre: 'Animation, Fantasy, Comedy', year: 2026,
-    synopsis: 'A magical new adventure from Walt Disney Animation Studios.',
-    director: 'Josie Trinidad, Jason Hand', lists: ['recent'] },
-  { id: 'mandalorian', title: 'The Mandalorian and Grogu', poster: './img/mandalorian.jpg', genre: 'Sci-Fi, Adventure, Action', year: 2026,
-    synopsis: 'The Mandalorian and his apprentice Grogu take on a dangerous new mission as the New Republic fights the remnants of the Empire.',
-    director: 'Jon Favreau', cast: 'Pedro Pascal, Sigourney Weaver, Jeremy Allen White', lists: ['recent'] },
-  { id: 'minecraft', title: 'A Minecraft Movie', poster: './img/mincraft.jpg', genre: 'Adventure, Comedy, Fantasy', year: 2025, runtime: 101,
-    synopsis: 'Four misfits are pulled through a portal into the Overworld, a cubic world that thrives on imagination, and must master it to get home.',
-    director: 'Jared Hess', cast: 'Jason Momoa, Jack Black, Danielle Brooks, Emma Myers, Sebastian Hansen', lists: ['recent'] },
-  { id: 'minions', title: 'Minions & Monsters', poster: './img/mions.jpg', genre: 'Animation, Comedy', year: 2026,
-    synopsis: 'The Minions try to make it big in Hollywood and accidentally unleash real monsters.',
-    director: 'Pierre Coffin', lists: ['recent'] },
-  { id: 'moana', title: 'Moana', poster: './img/moana.jpg', genre: 'Adventure, Family, Musical', year: 2026,
-    synopsis: 'In this live-action retelling, a daring young voyager sets sail across the ocean with the demigod Maui to save her people.',
-    director: 'Thomas Kail', cast: "Catherine Laga'aia, Dwayne Johnson", lists: ['recent'] },
-  { id: 'onemile', title: 'One Mile: Chapter Two', poster: './img/onemile.jpg', genre: 'Action, Thriller',
-    synopsis: 'Ryan Phillippe returns in the second chapter of the One Mile action thriller.',
-    cast: 'Ryan Phillippe', lists: ['recent'] },
-
-  { id: 'regrettingyou', title: 'Regretting You', poster: './img/regretingyou.jpg', genre: 'Drama, Romance', year: 2025,
-    synopsis: 'A mother and her teenage daughter struggle to reconnect after a tragic accident reveals a shocking betrayal.',
-    director: 'Josh Boone', cast: 'Allison Williams, Mckenna Grace, Dave Franco, Mason Thames', lists: ['top'] },
-  { id: 'snowwhite', title: 'Snow White', poster: './img/snowwhite.jpg', genre: 'Fantasy, Family, Musical', year: 2025, runtime: 109,
-    synopsis: "A princess joins forces with seven dwarfs and a band of rebels to free her kingdom from the Evil Queen.",
-    director: 'Marc Webb', cast: 'Rachel Zegler, Gal Gadot, Andrew Burnap', lists: ['top'] },
-  { id: 'spongebob', title: 'The SpongeBob Movie: Search for SquarePants', poster: './img/spongebob.jpg', genre: 'Animation, Comedy, Adventure', year: 2025,
-    synopsis: 'Desperate to prove he is a big guy, SpongeBob follows the ghostly Flying Dutchman on a swashbuckling quest to the depths of the sea.',
-    director: 'Derek Drymon', cast: 'Tom Kenny, Bill Fagerbakke, Clancy Brown, Mark Hamill', lists: ['top'] },
-  { id: 'odyssey', title: 'The Odyssey', poster: './img/the odyssey.jpg', genre: 'Action, Adventure, Fantasy', year: 2026,
-    synopsis: 'After the Trojan War, the Greek king Odysseus makes a long and perilous journey home.',
-    director: 'Christopher Nolan', cast: "Matt Damon, Tom Holland, Anne Hathaway, Zendaya, Lupita Nyong'o", lists: ['top'] },
-  { id: 'thunderbolts', title: 'Thunderbolts*', poster: './img/thunderbolts.jpg', genre: 'Action, Adventure, Superhero', year: 2025, runtime: 127,
-    synopsis: 'A team of unconventional antiheroes is caught in a deadly trap and forced on a dangerous mission that makes them confront their pasts.',
-    director: 'Jake Schreier', cast: 'Florence Pugh, Sebastian Stan, David Harbour, Wyatt Russell, Lewis Pullman', lists: ['top'] },
-  { id: 'wakanda', title: 'Black Panther: Wakanda Forever', poster: './img/wakanda.jpg', genre: 'Action, Adventure, Drama', year: 2022, runtime: 161,
-    synopsis: "After King T'Challa's death, Wakanda's leaders fight to protect their nation from intervening world powers and a hidden undersea kingdom.",
-    director: 'Ryan Coogler', cast: "Letitia Wright, Angela Bassett, Lupita Nyong'o, Danai Gurira, Tenoch Huerta", lists: ['top'] },
-  { id: 'wardriver', title: 'Wardriver', poster: './img/wardrive.jpg', genre: 'Thriller',
-    synopsis: 'A tense thriller where a drive turns into a fight for survival.', lists: ['top'] },
-  { id: 'zoolander', title: 'Zoolander', poster: './img/zoolander.jpg', genre: 'Comedy', year: 2001, runtime: 89,
-    synopsis: 'Dim-witted supermodel Derek Zoolander is brainwashed into becoming an assassin as part of a fashion-industry conspiracy.',
-    director: 'Ben Stiller', cast: 'Ben Stiller, Owen Wilson, Will Ferrell, Christine Taylor', lists: ['top'] },
-  { id: 'getout', title: 'Get Out', poster: './img/getout movie.webp', genre: 'Horror, Mystery, Thriller', year: 2017, runtime: 104,
-    synopsis: "When Chris, a young African-American man, visits his white girlfriend's family estate, he becomes ensnared in the more sinister, real reason for the invitation.",
-    director: 'Jordan Peele', cast: 'Daniel Kaluuya, Allison Williams, Bradley Whitford, Catherine Keener', lists: ['top'] },
-  { id: 'quietplace', title: 'A Quiet Place: Day One', poster: './img/quiteplace.jpg', genre: 'Horror, Sci-Fi, Thriller', year: 2024, runtime: 99,
-    synopsis: 'A young woman fights to survive in New York City on the day the world went quiet, when sound-hunting creatures invade.',
-    director: 'Michael Sarnoski', cast: "Lupita Nyong'o, Joseph Quinn, Alex Wolff, Djimon Hounsou", lists: ['top'] },
-  { id: 'shangchi', title: 'Shang-Chi and the Legend of the Ten Rings', poster: './img/shang-chi.jpg', genre: 'Action, Adventure, Fantasy', year: 2021, runtime: 132,
-    synopsis: 'Martial-arts master Shang-Chi confronts the past he thought he left behind when he is drawn into the web of the Ten Rings organization.',
-    director: 'Destin Daniel Cretton', cast: 'Simu Liu, Awkwafina, Tony Leung, Michelle Yeoh', lists: ['top'] },
-];
+// Shared code for every page: saved state, layout (sidebar, footer, modals),
+// movie cards, favorites, profile, trailer player and newsletter.
+// Each page sets <body data-page="..."> and loads movies-data.js, this file, then its own script.
 
 // ---------- Saved state (localStorage) ----------
 function load(key, fallback) {
@@ -91,49 +21,197 @@ function save(key, value) {
 
 let favorites = load('reelspot-favorites', []);
 let profileName = load('reelspot-name', 'Guest');
-let currentMovie = movies.find(movie => movie.id === 'getout');
-let view = 'movies';
-
-// ---------- Elements ----------
-const aside = document.querySelector('#asides');
-const search = document.querySelector('#search');
-const close = document.querySelector('#closeBtn');
-const menuBtn = document.querySelector('#menuBtn');
-const overlay = document.querySelector('#overlay');
-const navItems = document.querySelectorAll('.nav-item');
-
-const heroImg = document.querySelector('#heroImg');
-const heroPoster = document.querySelector('#heroPoster');
-const heroTitle = document.querySelector('#heroTitle');
-const heroMeta = document.querySelector('#heroMeta');
-const heroSynopsis = document.querySelector('#heroSynopsis');
-const heroDirector = document.querySelector('#heroDirector');
-const heroCast = document.querySelector('#heroCast');
-const watchBtn = document.querySelector('#watchBtn');
-const heroFav = document.querySelector('#heroFav');
-
-const recentSection = document.querySelector('#recentSection');
-const topSection = document.querySelector('#topSection');
-const favoritesSection = document.querySelector('#favoritesSection');
-const recentGrid = document.querySelector('#recentGrid');
-const topGrid = document.querySelector('#topGrid');
-const favoritesGrid = document.querySelector('#favoritesGrid');
-const favEmpty = document.querySelector('#favEmpty');
-const noResults = document.querySelector('#noResults');
-const noResultsQuery = document.querySelector('#noResultsQuery');
-
-const profileModal = document.querySelector('#profileModal');
-const profileClose = document.querySelector('#profileClose');
-const profileForm = document.querySelector('#profileForm');
-const nameInput = document.querySelector('#nameInput');
-
-const newsletter = document.querySelector('#newsletter');
-const newsEmail = document.querySelector('#newsEmail');
-const newsMsg = document.querySelector('#newsMsg');
-
+const page = document.body.dataset.page;
 const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
 
+// ---------- Helpers ----------
+const findMovie = id => movies.find(movie => movie.id === id);
+const genresOf = movie => movie.genre.split(',').map(genre => genre.trim());
+const movieUrl = movie => `movie.html?id=${encodeURIComponent(movie.id)}`;
+const movieMeta = movie => [movie.genre, movie.year, movie.runtime && `${movie.runtime} Min`].filter(Boolean).join(' | ');
+const escapeHtml = text => String(text).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+
+function matchesQuery(movie, query) {
+  if (!query) return true;
+  const text = [movie.title, movie.genre, movie.director, movie.cast].join(' ').toLowerCase();
+  return text.includes(query.toLowerCase());
+}
+
+// ---------- Layout ----------
+const navLinks = [
+  { nav: 'home', href: 'index.html', icon: 'uil-estate', label: 'Home' },
+  { nav: 'browse', href: 'browse.html', icon: 'uil-film', label: 'Browse' },
+  { nav: 'favorites', href: 'browse.html?list=favorites', icon: 'uil-star', label: 'Favorites' },
+];
+const navClass = 'nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10';
+
+function renderLayout() {
+  document.body.insertAdjacentHTML('afterbegin', `
+    <header class="md:hidden sticky top-0 z-30 flex items-center justify-between bg-[#131313] px-4 py-3">
+        <a href="index.html" class="text-[red] font-extrabold text-lg">REELSPOT</a>
+        <button id="menuBtn" class="text-white text-3xl cursor-pointer" aria-label="Open menu"><i class="uil uil-bars"></i></button>
+    </header>
+    <div id="overlay" class="hidden fixed inset-0 z-30 bg-black/60 md:hidden"></div>`);
+
+  document.querySelector('#layout').insertAdjacentHTML('afterbegin', `
+    <aside id="asides" class="aside fixed top-0 left-0 z-40 h-screen py-5 bg-[#131313] overflow-x-hidden overflow-y-auto">
+        <section class="aside-head flex items-center gap-3 px-3 mb-5">
+           <a href="index.html" class="text-[red] font-extrabold text-lg whitespace-nowrap">REELSPOT</a>
+            <button id="closeBtn" class="text-white text-2xl w-10 h-10 shrink-0 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white/10" aria-label="Toggle menu" aria-expanded="false"><i class="uil uil-bars"></i></button>
+        </section><hr class="text-[gray] mx-3 mb-5">
+        <ul id="items" class="text-white flex flex-col gap-2 px-3">
+            <li><label data-nav="search" for="search" class="${navClass}" title="Search"><i class="uil uil-search text-2xl"></i>
+                <input class="min-w-0 flex-1 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:border-white text-base font-normal p-1 [&::-webkit-search-cancel-button]:hidden" id="search" type="search" placeholder="Search..." autocomplete="off" aria-label="Search movies"></label></li>
+            ${navLinks.map(link => `
+            <li><a data-nav="${link.nav}" href="${link.href}" class="${navClass}${link.nav === page ? ' active' : ''}" title="${link.label}"><i class="uil ${link.icon} text-2xl"></i><p class="label">${link.label}</p></a></li>`).join('')}
+            <li><button data-nav="profile" class="${navClass}" title="Profile"><i class="uil uil-user text-2xl"></i><p class="label">Profile</p></button></li>
+        </ul>
+    </aside>`);
+
+  document.querySelector('main').insertAdjacentHTML('beforeend', `
+    <footer class="text-white relative flex flex-row justify-center items-center lg:items-stretch overflow-hidden">
+    <section class="bg-transparent w-full absolute inset-0 flex flex-col justify-center px-6 sm:px-10 z-10 lg:relative lg:bg-black lg:w-full">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-6 lg:mb-8">Stay Connected</h1>
+        <p class="text-base sm:text-lg font-thin text-white lg:text-gray-300 mb-2">From cult classics to modern masterpieces.</p>
+        <p class="text-base sm:text-lg font-thin text-white lg:text-gray-300 mb-6 lg:mb-8">Stay updated with the latest movies, news and articles from REELSPOT.</p>
+        <form id="newsletter" class="flex flex-wrap gap-4 w-full max-w-md" novalidate>
+            <input id="newsEmail" class="flex-1 min-w-[150px] border-0 border-b border-white bg-transparent focus:outline-none text-base sm:text-lg font-normal p-1" type="email" placeholder="Your Email" aria-label="Your email">
+            <button class="w-28 cursor-pointer text-center border border-1 border-white text-white rounded-full text-base sm:text-lg p-1 hover:bg-white hover:text-black transition-colors" type="submit">Submit</button>
+        </form>
+        <p id="newsMsg" class="mt-4 text-sm sm:text-base min-h-6"></p>
+    </section>
+    <img class="grayscale brightness-50 lg:brightness-100 w-full h-90 object-cover lg:w-120 lg:relative" src="./img/footer.jpg" alt="">
+    </footer>`);
+
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="profileModal" class="hidden fixed inset-0 z-50 bg-black/70 items-center justify-center p-4">
+        <section class="bg-[#131313] text-white rounded-2xl w-full max-w-sm p-6 relative" role="dialog" aria-modal="true" aria-labelledby="profileName">
+            <button id="profileClose" class="absolute top-4 right-4 text-2xl cursor-pointer" aria-label="Close profile"><i class="uil uil-times"></i></button>
+            <div class="flex items-center gap-4 mb-6">
+                <span id="avatarInitial" class="w-14 h-14 rounded-full bg-[#FF4E4E] flex items-center justify-center text-2xl font-bold">G</span>
+                <div>
+                    <p id="profileName" class="text-xl font-bold">Guest</p>
+                    <a href="browse.html?list=favorites" class="text-gray-400 text-sm hover:text-white"><span id="favCount">0</span> favorites</a>
+                </div>
+            </div>
+            <form id="profileForm">
+                <label class="text-sm text-gray-400" for="nameInput">Display name</label>
+                <input id="nameInput" class="w-full bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:border-white text-lg p-1" type="text" maxlength="30" placeholder="Your name">
+                <button class="mt-6 w-full cursor-pointer border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-lg p-2 hover:border-[#ff1b1b] hover:text-[#ff1b1b]" type="submit">Save</button>
+            </form>
+        </section>
+    </div>
+
+    <div id="trailerModal" class="hidden fixed inset-0 z-50 bg-black/85 items-center justify-center p-4">
+        <section class="w-full max-w-4xl relative" role="dialog" aria-modal="true" aria-labelledby="trailerTitle">
+            <div class="flex items-center justify-between mb-3 text-white">
+                <p id="trailerTitle" class="text-lg md:text-xl font-bold truncate pr-4"></p>
+                <button id="trailerClose" class="text-3xl cursor-pointer" aria-label="Close trailer"><i class="uil uil-times"></i></button>
+            </div>
+            <div id="trailerFrame" class="aspect-video w-full bg-black rounded-xl overflow-hidden"></div>
+        </section>
+    </div>`);
+}
+
+// ---------- Movie cards ----------
+function movieCard(movie) {
+  const isFav = favorites.includes(movie.id);
+  return `
+    <li class="movie-card relative group">
+      <a class="block" href="${movieUrl(movie)}" aria-label="${escapeHtml(movie.title)}">
+        <img class="rounded-lg w-full aspect-[2/3] object-cover transition-transform duration-300 group-hover:scale-[1.03]" src="${movie.poster}" alt="${escapeHtml(movie.title)} poster" loading="lazy">
+        <p class="mt-2 text-sm text-gray-300 truncate">${escapeHtml(movie.title)}</p>
+      </a>
+      <button class="fav-btn${isFav ? ' is-fav' : ''} absolute top-2 right-2 w-9 h-9 rounded-full bg-black/60 text-white text-lg flex items-center justify-center cursor-pointer hover:bg-[#FF4E4E]"
+        data-id="${movie.id}" aria-label="${isFav ? 'Remove from' : 'Add to'} favorites" aria-pressed="${isFav}">
+        <i class="uil uil-star"></i>
+      </button>
+    </li>`;
+}
+
+const gridClass = 'movie-grid gap-4 px-6 sm:px-8 grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6';
+
+// ---------- Favorites ----------
+// Pages listen for this to redraw: document.addEventListener('favorites-change', ...)
+function toggleFavorite(id) {
+  favorites = favorites.includes(id) ? favorites.filter(favId => favId !== id) : [...favorites, id];
+  save('reelspot-favorites', favorites);
+  updateProfile();
+  document.dispatchEvent(new CustomEvent('favorites-change', { detail: { id } }));
+}
+
+// Any element with .fav-btn[data-id] toggles that movie
+document.addEventListener('click', event => {
+  const favBtn = event.target.closest('.fav-btn[data-id]');
+  if (favBtn) {
+    event.preventDefault();
+    toggleFavorite(favBtn.dataset.id);
+  }
+});
+
+// A big "Add to Favorites" button: <button class="fav-btn" data-id="..."><i></i><span></span></button>
+function updateFavButton(button, movie) {
+  const isFav = favorites.includes(movie.id);
+  button.dataset.id = movie.id;
+  button.querySelector('span').textContent = isFav ? 'In Favorites' : 'Add to Favorites';
+  button.classList.toggle('is-fav', isFav);
+  button.setAttribute('aria-pressed', isFav);
+}
+
+// ---------- Trailer player ----------
+function openTrailer(movie) {
+  if (!movie.trailer) {
+    window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(`${movie.title} ${movie.year || ''} trailer`)}`, '_blank', 'noopener');
+    return;
+  }
+  const modal = document.querySelector('#trailerModal');
+  document.querySelector('#trailerTitle').textContent = `${movie.title} — Trailer`;
+  document.querySelector('#trailerFrame').innerHTML =
+    `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${movie.trailer}?autoplay=1&rel=0" title="${escapeHtml(movie.title)} trailer"
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+function closeTrailer() {
+  const modal = document.querySelector('#trailerModal');
+  document.querySelector('#trailerFrame').innerHTML = ''; // stops the video
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
+// Any element with .trailer-btn[data-id] plays that movie's trailer
+document.addEventListener('click', event => {
+  const trailerBtn = event.target.closest('.trailer-btn[data-id]');
+  if (trailerBtn) {
+    event.preventDefault();
+    openTrailer(findMovie(trailerBtn.dataset.id));
+  }
+});
+
+// ---------- Profile ----------
+function updateProfile() {
+  document.querySelector('#profileName').textContent = profileName;
+  document.querySelector('#avatarInitial').textContent = profileName.charAt(0).toUpperCase();
+  document.querySelector('#favCount').textContent = favorites.length;
+}
+function openProfile() {
+  const nameInput = document.querySelector('#nameInput');
+  nameInput.value = profileName === 'Guest' ? '' : profileName;
+  updateProfile();
+  const modal = document.querySelector('#profileModal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  nameInput.focus();
+}
+function closeProfile() {
+  const modal = document.querySelector('#profileModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+}
+
 // ---------- Sidebar ----------
+let aside, close, overlay, menuBtn, search;
+
 function openAside() {
   aside.classList.add('open-aside');
   close.setAttribute('aria-expanded', 'true');
@@ -145,198 +223,102 @@ function closeAside() {
   overlay.classList.add('hidden');
 }
 
-close.addEventListener('click', () => {
-  aside.classList.contains('open-aside') ? closeAside() : openAside();
-});
-menuBtn.addEventListener('click', openAside);
-overlay.addEventListener('click', closeAside);
+// Pages that filter in place set this: onSearch = query => { ... }
+// Without it, pressing Enter in the search box goes to the Browse page.
+let onSearch = null;
 
-// Desktop: clicking outside the expanded sidebar closes it
-document.addEventListener('click', event => {
-  if (aside.classList.contains('open-aside') && !aside.contains(event.target) && !menuBtn.contains(event.target)) {
+function initLayout() {
+  aside = document.querySelector('#asides');
+  close = document.querySelector('#closeBtn');
+  overlay = document.querySelector('#overlay');
+  menuBtn = document.querySelector('#menuBtn');
+  search = document.querySelector('#search');
+
+  close.addEventListener('click', () => {
+    aside.classList.contains('open-aside') ? closeAside() : openAside();
+  });
+  menuBtn.addEventListener('click', openAside);
+  overlay.addEventListener('click', closeAside);
+
+  // Desktop: clicking outside the expanded sidebar closes it
+  document.addEventListener('click', event => {
+    if (aside.classList.contains('open-aside') && !aside.contains(event.target) && !menuBtn.contains(event.target)) {
+      closeAside();
+    }
+  });
+
+  // Switching between desktop and mobile resets the sidebar
+  window.matchMedia('(max-width: 767px)').addEventListener('change', closeAside);
+
+  document.querySelector('[data-nav="search"]').addEventListener('click', () => {
+    openAside();
+    search.focus();
+  });
+  document.querySelector('[data-nav="profile"]').addEventListener('click', () => {
     closeAside();
-  }
-});
+    openProfile();
+  });
 
-// Switching between desktop and mobile resets the sidebar
-window.matchMedia('(max-width: 767px)').addEventListener('change', closeAside);
-
-navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    const target = item.dataset.nav;
-    if (target === 'search') {
-      openAside();
-      search.focus();
+  search.value = new URLSearchParams(location.search).get('q') || '';
+  search.addEventListener('input', () => onSearch && onSearch(search.value.trim()));
+  search.addEventListener('keydown', event => {
+    if (event.key !== 'Enter') return;
+    const query = search.value.trim();
+    if (!onSearch) {
+      location.href = `browse.html${query ? `?q=${encodeURIComponent(query)}` : ''}`;
       return;
     }
-    if (target === 'profile') {
-      openProfile();
-    } else {
-      setView(target);
-      document.querySelector('#movies').scrollIntoView({ behavior: 'smooth' });
-    }
-    closeAside();
-  });
-});
-
-function setView(newView) {
-  view = newView;
-  navItems.forEach(item => item.classList.toggle('active', item.dataset.nav === view));
-  renderGrids();
-}
-
-// ---------- Movie cards ----------
-function movieCard(movie) {
-  const isFav = favorites.includes(movie.id);
-  const selected = movie.id === currentMovie.id ? ' selected' : '';
-  return `
-    <li class="movie-card${selected} relative group">
-      <button class="show-btn block w-full cursor-pointer text-left" data-id="${movie.id}" aria-label="Show details for ${movie.title}">
-        <img class="rounded-lg w-full aspect-[2/3] object-cover transition-transform duration-300 group-hover:scale-[1.03]" src="${movie.poster}" alt="${movie.title} poster" loading="lazy">
-        <p class="mt-2 text-sm text-gray-300 truncate">${movie.title}</p>
-      </button>
-      <button class="fav-btn${isFav ? ' is-fav' : ''} absolute top-2 right-2 w-9 h-9 rounded-full bg-black/60 text-white text-lg flex items-center justify-center cursor-pointer hover:bg-[#FF4E4E]"
-        data-id="${movie.id}" aria-label="${isFav ? 'Remove from' : 'Add to'} favorites" aria-pressed="${isFav}">
-        <i class="uil uil-star"></i>
-      </button>
-    </li>`;
-}
-
-function matches(movie, query) {
-  if (!query) return true;
-  const text = [movie.title, movie.genre, movie.director, movie.cast].join(' ').toLowerCase();
-  return text.includes(query);
-}
-
-function renderGrids() {
-  const query = search.value.trim().toLowerCase();
-  const recent = movies.filter(movie => movie.lists.includes('recent') && matches(movie, query));
-  const top = movies.filter(movie => movie.lists.includes('top') && matches(movie, query));
-  const favs = movies.filter(movie => favorites.includes(movie.id) && matches(movie, query));
-
-  recentGrid.innerHTML = recent.map(movieCard).join('');
-  topGrid.innerHTML = top.map(movieCard).join('');
-  favoritesGrid.innerHTML = favs.map(movieCard).join('');
-
-  const showFavorites = view === 'favorites';
-  favoritesSection.classList.toggle('hidden', !showFavorites);
-  recentSection.classList.toggle('hidden', showFavorites || recent.length === 0);
-  topSection.classList.toggle('hidden', showFavorites || top.length === 0);
-  favEmpty.classList.toggle('hidden', !showFavorites || favorites.length > 0);
-
-  const visibleCount = showFavorites ? favs.length : recent.length + top.length;
-  const noMatch = query && visibleCount === 0 && !(showFavorites && favorites.length === 0);
-  noResults.classList.toggle('hidden', !noMatch);
-  noResultsQuery.textContent = search.value.trim();
-}
-
-document.querySelector('#movies').addEventListener('click', event => {
-  const favBtn = event.target.closest('.fav-btn');
-  const showBtn = event.target.closest('.show-btn');
-  if (favBtn) {
-    toggleFavorite(favBtn.dataset.id);
-  } else if (showBtn) {
-    showMovie(movies.find(movie => movie.id === showBtn.dataset.id));
-    document.querySelector('#hero').scrollIntoView({ behavior: 'smooth' });
-  }
-});
-
-// ---------- Hero (featured movie) ----------
-function showMovie(movie) {
-  currentMovie = movie;
-  heroImg.src = movie.poster;
-  heroImg.alt = movie.title;
-  heroPoster.src = movie.poster;
-  heroPoster.alt = `${movie.title} poster`;
-  heroTitle.textContent = movie.title;
-  heroMeta.textContent = [movie.genre, movie.year, movie.runtime && `${movie.runtime} Min`].filter(Boolean).join(' | ');
-  heroSynopsis.textContent = movie.synopsis;
-  heroDirector.textContent = movie.director ? `Director: ${movie.director}` : '';
-  heroDirector.classList.toggle('hidden', !movie.director);
-  heroCast.textContent = movie.cast ? `Cast: ${movie.cast}` : '';
-  watchBtn.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(`${movie.title} ${movie.year || ''} official trailer`)}`;
-  updateHeroFav();
-  renderGrids();
-}
-
-function updateHeroFav() {
-  const isFav = favorites.includes(currentMovie.id);
-  heroFav.querySelector('span').textContent = isFav ? 'In Favorites' : 'Add to Favorites';
-  heroFav.classList.toggle('fav-btn', true);
-  heroFav.classList.toggle('is-fav', isFav);
-  heroFav.setAttribute('aria-pressed', isFav);
-}
-
-heroFav.addEventListener('click', () => toggleFavorite(currentMovie.id));
-
-// ---------- Favorites ----------
-function toggleFavorite(id) {
-  favorites = favorites.includes(id) ? favorites.filter(favId => favId !== id) : [...favorites, id];
-  save('reelspot-favorites', favorites);
-  updateHeroFav();
-  updateProfile();
-  renderGrids();
-}
-
-// ---------- Search ----------
-search.addEventListener('input', () => (view === 'movies' ? renderGrids() : setView('movies')));
-search.addEventListener('keydown', event => {
-  if (event.key === 'Enter') {
-    document.querySelector('#movies').scrollIntoView({ behavior: 'smooth' });
+    const results = document.querySelector('#results');
+    if (results) results.scrollIntoView({ behavior: 'smooth' });
     if (isMobile()) closeAside();
-  }
-});
+  });
 
-// ---------- Profile ----------
-function updateProfile() {
-  document.querySelector('#profileName').textContent = profileName;
-  document.querySelector('#avatarInitial').textContent = profileName.charAt(0).toUpperCase();
-  document.querySelector('#favCount').textContent = favorites.length;
-}
-function openProfile() {
-  nameInput.value = profileName === 'Guest' ? '' : profileName;
-  updateProfile();
-  profileModal.classList.remove('hidden');
-  profileModal.classList.add('flex');
-  nameInput.focus();
-}
-function closeProfile() {
-  profileModal.classList.add('hidden');
-  profileModal.classList.remove('flex');
-}
-
-profileForm.addEventListener('submit', event => {
-  event.preventDefault();
-  profileName = nameInput.value.trim() || 'Guest';
-  save('reelspot-name', profileName);
-  updateProfile();
-  closeProfile();
-});
-profileClose.addEventListener('click', closeProfile);
-profileModal.addEventListener('click', event => {
-  if (event.target === profileModal) closeProfile();
-});
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') {
+  // Profile
+  document.querySelector('#profileForm').addEventListener('submit', event => {
+    event.preventDefault();
+    profileName = document.querySelector('#nameInput').value.trim() || 'Guest';
+    save('reelspot-name', profileName);
+    updateProfile();
     closeProfile();
-    closeAside();
-  }
-});
+  });
+  document.querySelector('#profileClose').addEventListener('click', closeProfile);
+  document.querySelector('#profileModal').addEventListener('click', event => {
+    if (event.target.id === 'profileModal') closeProfile();
+  });
 
-// ---------- Newsletter ----------
-newsletter.addEventListener('submit', event => {
-  event.preventDefault();
-  const email = newsEmail.value.trim();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    newsMsg.textContent = 'Please enter a valid email address.';
-    newsMsg.className = 'mt-4 text-sm sm:text-base min-h-6 text-[#FF4E4E]';
-    return;
-  }
-  newsMsg.textContent = `Thanks for subscribing, ${email}!`;
-  newsMsg.className = 'mt-4 text-sm sm:text-base min-h-6 text-green-400';
-  newsletter.reset();
-});
+  // Trailer
+  document.querySelector('#trailerClose').addEventListener('click', closeTrailer);
+  document.querySelector('#trailerModal').addEventListener('click', event => {
+    if (event.target.id === 'trailerModal') closeTrailer();
+  });
 
-// ---------- Start ----------
-showMovie(currentMovie);
-updateProfile();
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeTrailer();
+      closeProfile();
+      closeAside();
+    }
+  });
+
+  // Newsletter (front-end only: nothing is sent)
+  const newsletter = document.querySelector('#newsletter');
+  const newsEmail = document.querySelector('#newsEmail');
+  const newsMsg = document.querySelector('#newsMsg');
+  newsletter.addEventListener('submit', event => {
+    event.preventDefault();
+    const email = newsEmail.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newsMsg.textContent = 'Please enter a valid email address.';
+      newsMsg.className = 'mt-4 text-sm sm:text-base min-h-6 text-[#FF4E4E]';
+      return;
+    }
+    newsMsg.textContent = `Thanks for subscribing, ${email}!`;
+    newsMsg.className = 'mt-4 text-sm sm:text-base min-h-6 text-green-400';
+    newsletter.reset();
+  });
+
+  updateProfile();
+}
+
+renderLayout();
+initLayout();

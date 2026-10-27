@@ -4,112 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReelSpot</title>
+    <meta name="description" content="ReelSpot: browse movies, watch trailers and save your favorites.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23131313'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='900' font-size='20' text-anchor='middle' fill='red'%3ER%3C/text%3E%3C/svg%3E">
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./reelspot.css?v=3">
+    <link rel="stylesheet" href="./reelspot.css?v=4">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
 </head>
-<body class="bg-[#131313]">
-    <!-- Mobile top bar -->
-    <header class="md:hidden sticky top-0 z-30 flex items-center justify-between bg-[#131313] px-4 py-3">
-        <h1 class="text-[red] font-extrabold text-lg">REELSPOT</h1>
-        <button id="menuBtn" class="text-white text-3xl cursor-pointer" aria-label="Open menu"><i class="uil uil-bars"></i></button>
-    </header>
-    <div id="overlay" class="hidden fixed inset-0 z-30 bg-black/60 md:hidden"></div>
-
-    <section class="flex flex-row">
-        <aside id="asides" class="aside fixed top-0 left-0 z-40 h-screen py-5 bg-[#131313] overflow-x-hidden overflow-y-auto">
-        <section class="aside-head flex items-center gap-3 px-3 mb-5">
-           <h1 class="text-[red] font-extrabold text-lg whitespace-nowrap">REELSPOT</h1>
-            <button id="closeBtn" class="text-white text-2xl w-10 h-10 shrink-0 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white/10" aria-label="Toggle menu" aria-expanded="false"><i class="uil uil-bars"></i></button>
-        </section><hr class="text-[gray] mx-3 mb-5">
-        <ul id="items" class="text-white flex flex-col gap-2 px-3">
-            <li><label data-nav="search" for="search" class="nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Search"><i class="uil uil-search text-2xl"></i>
-                <input class="min-w-0 flex-1 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:border-white text-base font-normal p-1 [&::-webkit-search-cancel-button]:hidden" id="search" type="search" placeholder="Search..." autocomplete="off" aria-label="Search movies"></label></li>
-            <li><button data-nav="movies" class="nav-item active w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Movies"><i class="uil uil-film text-2xl"></i><p class="label">Movies</p></button></li>
-            <li><button data-nav="favorites" class="nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Favorites"><i class="uil uil-star text-2xl"></i><p class="label">Favorites</p></button></li>
-            <li><button data-nav="profile" class="nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Profile"><i class="uil uil-user text-2xl"></i><p class="label">Profile</p></button></li>
-        </ul>
-    </aside>
-
+<body class="bg-[#131313]" data-page="home">
+    <!-- The sidebar, footer and pop-ups are added by reelspot.js -->
+    <section id="layout" class="flex flex-row">
     <main class="flex-1 min-w-0 md:ml-[6.25rem]">
         <section id="hero" class="header-movie relative">
-            <img id="heroImg" class="w-full h-100 md:h-screen object-cover object-top md:brightness-40" src="./img/getout movie.webp" alt="Get Out">
+            <img id="heroImg" class="w-full h-100 md:h-screen object-cover object-top md:brightness-40 transition-opacity duration-500" src="./img/getout movie.webp" alt="">
             <section class="bg-[#131313] md:absolute md:inset-x-0 md:top-0 md:bg-transparent h-auto py-10 px-6 sm:px-8 md:py-15 flex justify-between gap-10">
                 <div class="max-w-2xl">
-                    <p id="heroTitle" class="text-white font-bold text-4xl sm:text-5xl md:text-6xl mb-5 uppercase">Get Out</p>
-                    <p id="heroMeta" class="text-gray-500 text-sm mb-5 md:text-lg">Horror, Mystery, Thriller | 2017 | 104 Min</p>
-                    <p id="heroSynopsis" class="text-gray-300 font-thin md:text-lg mb-8">When Chris, a young African-American man, visits his white girlfriend's family estate, he becomes ensnared in the more sinister, real reason for the invitation.</p>
-                    <p id="heroDirector" class="text-gray-300 font-thin">Director: Jordan Peele</p>
-                    <p id="heroCast" class="text-gray-300 font-thin mb-10">Cast: Daniel Kaluuya, Allison Williams, Bradley Whitford, Catherine Keener</p>
+                    <p id="heroTitle" class="text-white font-bold text-4xl sm:text-5xl md:text-6xl mb-5 uppercase"></p>
+                    <p id="heroMeta" class="text-gray-500 text-sm mb-5 md:text-lg"></p>
+                    <p id="heroSynopsis" class="text-gray-300 font-thin md:text-lg mb-8"></p>
+                    <p id="heroDirector" class="text-gray-300 font-thin"></p>
+                    <p id="heroCast" class="text-gray-300 font-thin mb-10"></p>
                     <div class="flex flex-wrap items-center gap-4">
-                        <a id="watchBtn" class="border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-xl md:text-2xl py-2 px-4 md:p-3 hover:border-[#ff1b1b] hover:text-[#ff1b1b]" href="#" target="_blank" rel="noopener"><i class="uil uil-play"> </i>Watch Trailer</a>
-                        <button id="heroFav" class="cursor-pointer border border-1 border-white text-white rounded-full text-lg md:text-xl py-2 px-4 md:p-3 hover:bg-white hover:text-black transition-colors"><i class="uil uil-star"> </i><span>Add to Favorites</span></button>
+                        <button id="watchBtn" class="trailer-btn cursor-pointer border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-xl md:text-2xl py-2 px-4 md:p-3 hover:border-[#ff1b1b] hover:text-[#ff1b1b]"><i class="uil uil-play"> </i>Watch Trailer</button>
+                        <a id="infoBtn" class="border border-1 border-white text-white rounded-full text-lg md:text-xl py-2 px-4 md:p-3 hover:bg-white hover:text-black transition-colors" href="#"><i class="uil uil-info-circle"> </i>More Info</a>
+                        <button id="heroFav" class="fav-btn cursor-pointer w-12 h-12 md:w-14 md:h-14 border border-1 border-white text-white rounded-full text-xl flex items-center justify-center hover:bg-white hover:text-black transition-colors" aria-label="Add to favorites"><i class="uil uil-star"></i><span class="sr-only">Add to Favorites</span></button>
                     </div>
+                    <div id="heroDots" class="flex gap-2 mt-10" role="tablist" aria-label="Featured movies"></div>
                 </div>
                 <img id="heroPoster" class="hidden lg:block w-56 xl:w-64 h-fit rounded-xl shadow-2xl" src="./img/getout movie.webp" alt="">
             </section>
         </section>
 
-        <section id="movies" class="movie-Content bg-[#242424] text-white pb-10">
-            <div id="favoritesSection" class="hidden">
-                <h1 class="text-2xl md:text-4xl px-6 sm:px-8 py-8 md:py-10 font-bold">My Favorites</h1>
-                <p id="favEmpty" class="px-6 sm:px-8 text-gray-400">No favorites yet. Tap the <i class="uil uil-star"></i> on any poster to add it here.</p>
-                <ul id="favoritesGrid" class="movie-grid gap-4 px-6 sm:px-8 grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"></ul>
-            </div>
-
+        <section id="results" class="movie-Content bg-[#242424] text-white pb-10">
             <div id="recentSection">
-                <h1 class="text-2xl md:text-4xl px-6 sm:px-8 py-8 md:py-10 font-bold">Recently Added Films</h1>
-                <ul id="recentGrid" class="movie-grid gap-4 px-6 sm:px-8 grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"></ul>
+                <div class="flex items-end justify-between px-6 sm:px-8 py-8 md:py-10">
+                    <h1 class="text-2xl md:text-4xl font-bold">Recently Added Films</h1>
+                    <a class="text-gray-400 hover:text-white text-sm md:text-base whitespace-nowrap" href="browse.html?list=recent">See all <i class="uil uil-angle-right"></i></a>
+                </div>
+                <ul id="recentGrid"></ul>
             </div>
 
             <div id="topSection">
-                <h1 class="text-2xl md:text-4xl px-6 sm:px-8 py-8 md:py-10 font-bold">Top Rated Films</h1>
-                <ul id="topGrid" class="movie-grid gap-4 px-6 sm:px-8 grid grid-cols-2 min-[420px]:grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"></ul>
+                <div class="flex items-end justify-between px-6 sm:px-8 py-8 md:py-10">
+                    <h1 class="text-2xl md:text-4xl font-bold">Top Rated Films</h1>
+                    <a class="text-gray-400 hover:text-white text-sm md:text-base whitespace-nowrap" href="browse.html?list=top">See all <i class="uil uil-angle-right"></i></a>
+                </div>
+                <ul id="topGrid"></ul>
             </div>
 
             <p id="noResults" class="hidden px-6 sm:px-8 pt-10 text-gray-400 text-lg">No movies match "<span id="noResultsQuery"></span>".</p>
         </section>
-
-   <footer class="text-white relative flex flex-row justify-center items-center lg:items-stretch overflow-hidden">
-    <section class="bg-transparent w-full absolute inset-0 flex flex-col justify-center px-6 sm:px-10 z-10 lg:relative lg:bg-black lg:w-full">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-6 lg:mb-8">Stay Connected</h1>
-        <p class="text-base sm:text-lg font-thin text-white lg:text-gray-300 mb-2">From cult classics to modern masterpieces.</p>
-        <p class="text-base sm:text-lg font-thin text-white lg:text-gray-300 mb-6 lg:mb-8">Stay updated with the latest movies, news and articles from REELSPOT.</p>
-
-        <form id="newsletter" class="flex flex-wrap gap-4 w-full max-w-md" novalidate>
-            <input id="newsEmail" class="flex-1 min-w-[150px] border-0 border-b border-white bg-transparent focus:outline-none text-base sm:text-lg font-normal p-1 [&::-webkit-search-cancel-button]:hidden" type="email" placeholder="Your Email" aria-label="Your email">
-            <button class="w-28 cursor-pointer text-center border border-1 border-white text-white rounded-full text-base sm:text-lg p-1 hover:bg-white hover:text-black transition-colors" type="submit">Submit</button>
-        </form>
-        <p id="newsMsg" class="mt-4 text-sm sm:text-base min-h-6"></p>
-    </section>
-
-    <img class="grayscale brightness-50 lg:brightness-100 w-full h-90 object-cover lg:w-120 lg:relative" src="./img/footer.jpg" alt="">
-</footer>
     </main>
     </section>
 
-
-
-    <!-- Profile modal -->
-    <div id="profileModal" class="hidden fixed inset-0 z-50 bg-black/70 items-center justify-center p-4">
-        <section class="bg-[#131313] text-white rounded-2xl w-full max-w-sm p-6 relative" role="dialog" aria-modal="true" aria-labelledby="profileName">
-            <button id="profileClose" class="absolute top-4 right-4 text-2xl cursor-pointer" aria-label="Close profile"><i class="uil uil-times"></i></button>
-            <div class="flex items-center gap-4 mb-6">
-                <span id="avatarInitial" class="w-14 h-14 rounded-full bg-[#FF4E4E] flex items-center justify-center text-2xl font-bold">G</span>
-                <div>
-                    <p id="profileName" class="text-xl font-bold">Guest</p>
-                    <p class="text-gray-400 text-sm"><span id="favCount">0</span> favorites</p>
-                </div>
-            </div>
-            <form id="profileForm">
-                <label class="text-sm text-gray-400" for="nameInput">Display name</label>
-                <input id="nameInput" class="w-full bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:border-white text-lg p-1" type="text" maxlength="30" placeholder="Your name">
-                <button class="mt-6 w-full cursor-pointer border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-lg p-2 hover:border-[#ff1b1b] hover:text-[#ff1b1b]" type="submit">Save</button>
-            </form>
-        </section>
-    </div>
-
+    <script src="./movies-data.js?v=4"></script>
+    <script src="./reelspot.js?v=4"></script>
+    <script src="./home.js?v=4"></script>
 </body>
-    <script src="./reelspot.js?v=3"></script>
 </html>

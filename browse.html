@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Movies · ReelSpot</title>
+    <meta name="description" content="Browse every movie on ReelSpot by genre, list and year.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23131313'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='900' font-size='20' text-anchor='middle' fill='red'%3ER%3C/text%3E%3C/svg%3E">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./reelspot.css?v=4">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+</head>
+<body class="bg-[#131313]" data-page="browse">
+    <!-- The sidebar, footer and pop-ups are added by reelspot.js -->
+    <section id="layout" class="flex flex-row">
+    <main class="flex-1 min-w-0 md:ml-[6.25rem]">
+        <section id="results" class="movie-Content bg-[#242424] text-white pb-16 min-h-screen">
+            <div class="px-6 sm:px-8 pt-8 md:pt-12">
+                <h1 id="browseTitle" class="text-3xl md:text-5xl font-bold mb-2">Browse Movies</h1>
+                <p id="browseCount" class="text-gray-400 mb-6"></p>
+
+                <div class="flex flex-col lg:flex-row lg:items-center gap-4 mb-5">
+                    <div class="relative flex-1 max-w-md">
+                        <i class="uil uil-search absolute left-3 top-1/2 -translate-y-1/2 text-xl text-gray-400"></i>
+                        <input id="browseSearch" class="w-full bg-[#131313] rounded-full pl-10 pr-4 py-2 border border-white/10 focus:outline-none focus:border-white/60" type="search" placeholder="Search title, genre, director or cast" aria-label="Search movies" autocomplete="off">
+                    </div>
+                    <div id="listTabs" class="no-scrollbar flex gap-2 overflow-x-auto sm:flex-wrap -mx-6 px-6 sm:mx-0 sm:px-0" role="tablist" aria-label="Lists"></div>
+                    <label class="flex items-center gap-2 text-sm text-gray-400 lg:ml-auto">Sort
+                        <select id="sortSelect" class="bg-[#131313] text-white rounded-full px-3 py-2 border border-white/10 focus:outline-none focus:border-white/60 cursor-pointer">
+                            <option value="title">Title A–Z</option>
+                            <option value="newest">Newest first</option>
+                            <option value="oldest">Oldest first</option>
+                            <option value="runtime">Longest first</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div id="genreChips" class="no-scrollbar flex gap-2 overflow-x-auto sm:flex-wrap mb-8 -mx-6 px-6 sm:mx-0 sm:px-0" aria-label="Genres"></div>
+            </div>
+
+            <ul id="browseGrid"></ul>
+
+            <div id="browseEmpty" class="hidden px-6 sm:px-8 pt-6 text-gray-400 text-lg">
+                <p id="browseEmptyText"></p>
+                <button id="clearFilters" class="mt-4 border border-white/40 text-white rounded-full px-4 py-2 hover:bg-white hover:text-black transition-colors cursor-pointer">Clear filters</button>
+            </div>
+        </section>
+    </main>
+    </section>
+
+    <script src="./movies-data.js?v=4"></script>
+    <script src="./reelspot.js?v=4"></script>
+    <script src="./browse.js?v=4"></script>
+</body>
+</html>

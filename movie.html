@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie · ReelSpot</title>
+    <meta name="description" content="Movie details, trailer and similar movies on ReelSpot.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23131313'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='900' font-size='20' text-anchor='middle' fill='red'%3ER%3C/text%3E%3C/svg%3E">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./reelspot.css?v=4">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+</head>
+<body class="bg-[#131313]" data-page="movie">
+    <!-- The sidebar, footer and pop-ups are added by reelspot.js -->
+    <section id="layout" class="flex flex-row">
+    <main class="flex-1 min-w-0 md:ml-[6.25rem]">
+        <section id="details" class="relative overflow-hidden text-white">
+            <img id="backdrop" class="absolute inset-0 w-full h-full object-cover blur-2xl scale-110 brightness-30" src="" alt="">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#242424] via-transparent to-transparent"></div>
+            <div class="relative flex flex-col md:flex-row gap-8 lg:gap-12 px-6 sm:px-8 py-10 md:py-16">
+                <img id="poster" class="w-48 sm:w-60 lg:w-72 aspect-[2/3] object-cover rounded-xl shadow-2xl self-center md:self-start" src="" alt="">
+                <div class="max-w-3xl">
+                    <a href="browse.html" class="text-gray-400 hover:text-white text-sm"><i class="uil uil-angle-left"></i> All movies</a>
+                    <h1 id="title" class="font-bold text-4xl sm:text-5xl lg:text-6xl mt-3 mb-4"></h1>
+                    <p id="meta" class="text-gray-400 md:text-lg mb-4"></p>
+                    <div id="genres" class="flex flex-wrap gap-2 mb-6"></div>
+                    <p id="synopsis" class="text-gray-200 font-thin md:text-lg mb-6"></p>
+                    <p id="director" class="text-gray-300 font-thin"></p>
+                    <p id="cast" class="text-gray-300 font-thin mb-8"></p>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <button id="watchBtn" class="trailer-btn cursor-pointer border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-xl md:text-2xl py-2 px-4 md:p-3 hover:border-[#ff1b1b] hover:text-[#ff1b1b]"><i class="uil uil-play"> </i>Watch Trailer</button>
+                        <button id="favBtn" class="fav-btn cursor-pointer border border-1 border-white text-white rounded-full text-lg md:text-xl py-2 px-4 md:p-3 hover:bg-white hover:text-black transition-colors"><i class="uil uil-star"> </i><span>Add to Favorites</span></button>
+                        <button id="shareBtn" class="cursor-pointer text-gray-300 hover:text-white text-lg py-2 px-2"><i class="uil uil-share-alt"> </i><span>Share</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#242424] text-white pb-12">
+            <div id="trailerSection">
+                <h2 class="text-2xl md:text-3xl font-bold px-6 sm:px-8 pt-8 pb-6">Trailer</h2>
+                <div class="px-6 sm:px-8">
+                    <div id="inlineTrailer" class="aspect-video w-full max-w-4xl bg-black rounded-xl overflow-hidden relative"></div>
+                </div>
+            </div>
+
+            <h2 class="text-2xl md:text-3xl font-bold px-6 sm:px-8 pt-12 pb-6">More Like This</h2>
+            <ul id="similarGrid"></ul>
+        </section>
+
+        <section id="notFound" class="hidden bg-[#242424] text-white min-h-screen px-6 sm:px-8 py-20 text-center">
+            <h1 class="text-4xl font-bold mb-4">Movie not found</h1>
+            <p class="text-gray-400 mb-8">That movie isn't in the ReelSpot catalog.</p>
+            <a class="border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-lg py-2 px-6 hover:border-[#ff1b1b] hover:text-[#ff1b1b]" href="browse.html">Browse all movies</a>
+        </section>
+    </main>
+    </section>
+
+    <script src="./movies-data.js?v=4"></script>
+    <script src="./reelspot.js?v=4"></script>
+    <script src="./movie.js?v=4"></script>
+</body>
+</html>
