@@ -7,30 +7,33 @@
     <meta name="description" content="ReelSpot: browse movies, watch trailers and save your favorites.">
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23131313'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='900' font-size='20' text-anchor='middle' fill='red'%3ER%3C/text%3E%3C/svg%3E">
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./reelspot.css?v=4">
+    <link rel="stylesheet" href="./reelspot.css?v=5">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
 </head>
 <body class="bg-[#131313]" data-page="home">
     <!-- The sidebar, footer and pop-ups are added by reelspot.js -->
     <section id="layout" class="flex flex-row">
     <main class="flex-1 min-w-0 md:ml-[6.25rem]">
-        <section id="hero" class="header-movie relative">
-            <img id="heroImg" class="w-full h-100 md:h-screen object-cover object-top md:brightness-40 transition-opacity duration-500" src="./img/getout movie.webp" alt="">
-            <section class="bg-[#131313] md:absolute md:inset-x-0 md:top-0 md:bg-transparent h-auto py-10 px-6 sm:px-8 md:py-15 flex justify-between gap-10">
-                <div class="max-w-2xl">
-                    <p id="heroTitle" class="text-white font-bold text-4xl sm:text-5xl md:text-6xl mb-5 uppercase"></p>
-                    <p id="heroMeta" class="text-gray-500 text-sm mb-5 md:text-lg"></p>
-                    <p id="heroSynopsis" class="text-gray-300 font-thin md:text-lg mb-8"></p>
-                    <p id="heroDirector" class="text-gray-300 font-thin"></p>
-                    <p id="heroCast" class="text-gray-300 font-thin mb-10"></p>
-                    <div class="flex flex-wrap items-center gap-4">
-                        <button id="watchBtn" class="trailer-btn cursor-pointer border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-xl md:text-2xl py-2 px-4 md:p-3 hover:border-[#ff1b1b] hover:text-[#ff1b1b]"><i class="uil uil-play"> </i>Watch Trailer</button>
-                        <a id="infoBtn" class="border border-1 border-white text-white rounded-full text-lg md:text-xl py-2 px-4 md:p-3 hover:bg-white hover:text-black transition-colors" href="#"><i class="uil uil-info-circle"> </i>More Info</a>
-                        <button id="heroFav" class="fav-btn cursor-pointer w-12 h-12 md:w-14 md:h-14 border border-1 border-white text-white rounded-full text-xl flex items-center justify-center hover:bg-white hover:text-black transition-colors" aria-label="Add to favorites"><i class="uil uil-star"></i><span class="sr-only">Add to Favorites</span></button>
+        <!-- Phones: picture on top, text below. Tablet and up: text over the picture; the hero is at least
+             one screen tall and grows if the text needs more room (short/landscape screens). -->
+        <section id="hero" class="header-movie relative md:min-h-screen overflow-hidden touch-pan-y">
+            <img id="heroImg" class="w-full h-72 min-[480px]:h-96 md:absolute md:inset-0 md:h-full object-cover object-top md:brightness-40 transition-opacity duration-500" src="./img/getout movie.webp" alt="">
+            <div class="hidden md:block absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#242424] to-transparent"></div>
+            <section class="relative bg-[#131313] md:bg-transparent py-8 px-6 sm:px-8 md:pt-15 md:pb-24 flex justify-between gap-10">
+                <div class="max-w-2xl min-w-0">
+                    <p id="heroTitle" class="text-white font-bold text-3xl min-[400px]:text-4xl sm:text-5xl md:text-6xl mb-4 md:mb-5 uppercase break-words"></p>
+                    <p id="heroMeta" class="text-gray-500 text-sm mb-4 md:mb-5 md:text-lg"></p>
+                    <p id="heroSynopsis" class="text-gray-300 font-thin md:text-lg mb-6 md:mb-8"></p>
+                    <p id="heroDirector" class="text-gray-300 font-thin text-sm sm:text-base"></p>
+                    <p id="heroCast" class="text-gray-300 font-thin text-sm sm:text-base mb-8 md:mb-10"></p>
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                        <button id="watchBtn" class="trailer-btn cursor-pointer border border-1 border-[#FF4E4E] text-[#FF4E4E] rounded-full text-base sm:text-xl md:text-2xl py-2 px-4 md:p-3 whitespace-nowrap hover:border-[#ff1b1b] hover:text-[#ff1b1b]"><i class="uil uil-play"> </i>Watch Trailer</button>
+                        <a id="infoBtn" class="border border-1 border-white text-white rounded-full text-base sm:text-lg md:text-xl py-2 px-4 md:p-3 whitespace-nowrap hover:bg-white hover:text-black transition-colors" href="#"><i class="uil uil-info-circle"> </i>More Info</a>
+                        <button id="heroFav" class="fav-btn cursor-pointer w-11 h-11 md:w-14 md:h-14 shrink-0 border border-1 border-white text-white rounded-full text-xl flex items-center justify-center hover:bg-white hover:text-black transition-colors" aria-label="Add to favorites"><i class="uil uil-star"></i><span class="sr-only">Add to Favorites</span></button>
                     </div>
-                    <div id="heroDots" class="flex gap-2 mt-10" role="tablist" aria-label="Featured movies"></div>
+                    <div id="heroDots" class="flex gap-2 mt-8 md:mt-10" role="tablist" aria-label="Featured movies"></div>
                 </div>
-                <img id="heroPoster" class="hidden lg:block w-56 xl:w-64 h-fit rounded-xl shadow-2xl" src="./img/getout movie.webp" alt="">
+                <img id="heroPoster" class="hidden lg:block w-56 xl:w-64 h-fit shrink-0 rounded-xl shadow-2xl" src="./img/getout movie.webp" alt="">
             </section>
         </section>
 
@@ -56,8 +59,8 @@
     </main>
     </section>
 
-    <script src="./movies-data.js?v=4"></script>
-    <script src="./reelspot.js?v=4"></script>
-    <script src="./home.js?v=4"></script>
+    <script src="./movies-data.js?v=5"></script>
+    <script src="./reelspot.js?v=5"></script>
+    <script src="./home.js?v=5"></script>
 </body>
 </html>

@@ -65,6 +65,18 @@ const hero = document.querySelector('#hero');
 hero.addEventListener('mouseenter', () => clearInterval(rotateTimer));
 hero.addEventListener('mouseleave', startRotation);
 
+// Touch screens: swipe left/right on the hero to change movie
+let touchStartX = null;
+hero.addEventListener('touchstart', event => (touchStartX = event.touches[0].clientX), { passive: true });
+hero.addEventListener('touchend', event => {
+  if (touchStartX === null) return;
+  const distance = event.changedTouches[0].clientX - touchStartX;
+  touchStartX = null;
+  if (Math.abs(distance) < 50) return;
+  showFeatured(featuredIndex + (distance < 0 ? 1 : -1));
+  startRotation();
+});
+
 // ---------- Rows ----------
 function renderRows() {
   const query = search.value.trim();

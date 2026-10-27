@@ -41,7 +41,8 @@ Every movie has its own page with a link you can share, like `movie.html?id=furi
 ## ✨ Features
 
 **Home page**
-- **Featured movies:** the top section rotates through 5 featured movies every 8 seconds. Use the dots to jump between them; rotation pauses while your mouse is over it.
+- **Featured movies:** the top section rotates through 5 featured movies every 8 seconds. Use the dots or swipe left/right on touch screens to change movie; rotation pauses while your mouse is over it.
+- **Fits any screen:** on phones the picture sits above the text; on tablets and desktops the text is laid over the picture, which grows when a short or sideways screen needs more room.
 - **Rows:** "Recently Added" and "Top Rated" rows, each with a "See all" link.
 
 **Trailers**
@@ -67,7 +68,7 @@ Every movie has its own page with a link you can share, like `movie.html?id=furi
 - **Sidebar:** on desktop, a collapsed icon bar; the ☰ button expands it over the page. On phones, a slide-in menu.
 - **Search box:** the sidebar search filters the page you're on. On a movie page, pressing Enter takes you to Browse with your search.
 - **Newsletter form:** checks the email address and shows a message. This is front-end only; no email is sent or stored.
-- **Responsive design:** works on phones (from 360px wide), tablets and desktops.
+- **Responsive design:** tested on phones from 320px wide (upright and sideways), tablets, laptops and 1920px monitors, with no sideways scrolling.
 
 > **Note:** favorites and profile are saved per browser. They don't sync between devices, because there are no accounts.
 
