@@ -96,7 +96,6 @@ let view = 'movies';
 
 // ---------- Elements ----------
 const aside = document.querySelector('#asides');
-const items = document.querySelector('#items');
 const search = document.querySelector('#search');
 const close = document.querySelector('#closeBtn');
 const menuBtn = document.querySelector('#menuBtn');
@@ -137,19 +136,30 @@ const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
 // ---------- Sidebar ----------
 function openAside() {
   aside.classList.add('open-aside');
+  close.setAttribute('aria-expanded', 'true');
   if (isMobile()) overlay.classList.remove('hidden');
 }
 function closeAside() {
   aside.classList.remove('open-aside');
+  close.setAttribute('aria-expanded', 'false');
   overlay.classList.add('hidden');
 }
 
-items.addEventListener('click', () => {
-  if (!isMobile()) openAside();
+close.addEventListener('click', () => {
+  aside.classList.contains('open-aside') ? closeAside() : openAside();
 });
-close.addEventListener('click', closeAside);
 menuBtn.addEventListener('click', openAside);
 overlay.addEventListener('click', closeAside);
+
+// Desktop: clicking outside the expanded sidebar closes it
+document.addEventListener('click', event => {
+  if (aside.classList.contains('open-aside') && !aside.contains(event.target) && !menuBtn.contains(event.target)) {
+    closeAside();
+  }
+});
+
+// Switching between desktop and mobile resets the sidebar
+window.matchMedia('(max-width: 767px)').addEventListener('change', closeAside);
 
 navItems.forEach(item => {
   item.addEventListener('click', () => {
@@ -165,7 +175,7 @@ navItems.forEach(item => {
       setView(target);
       document.querySelector('#movies').scrollIntoView({ behavior: 'smooth' });
     }
-    if (isMobile()) closeAside();
+    closeAside();
   });
 });
 
@@ -269,7 +279,7 @@ function toggleFavorite(id) {
 }
 
 // ---------- Search ----------
-search.addEventListener('input', renderGrids);
+search.addEventListener('input', () => (view === 'movies' ? renderGrids() : setView('movies')));
 search.addEventListener('keydown', event => {
   if (event.key === 'Enter') {
     document.querySelector('#movies').scrollIntoView({ behavior: 'smooth' });

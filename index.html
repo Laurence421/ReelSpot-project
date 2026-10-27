@@ -6,7 +6,7 @@
     <title>ReelSpot</title>
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23131313'/%3E%3Ctext x='16' y='23' font-family='Arial' font-weight='900' font-size='20' text-anchor='middle' fill='red'%3ER%3C/text%3E%3C/svg%3E">
      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="./reelspot.css?v=2">
+    <link rel="stylesheet" href="./reelspot.css?v=3">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
 </head>
 <body class="bg-[#131313]">
@@ -18,21 +18,21 @@
     <div id="overlay" class="hidden fixed inset-0 z-30 bg-black/60 md:hidden"></div>
 
     <section class="flex flex-row">
-        <aside id="asides" class="aside fixed md:sticky top-0 left-0 z-40 h-screen px-3 md:px-1 py-5 bg-[#131313] overflow-hidden">
-        <section class="flex justify-between items-center gap-2 mb-8 overflow-hidden">
-           <h1 class="text-[red] font-extrabold text-lg">REELSPOT</h1>
-            <button id="closeBtn" class="text-white text-3xl cursor-pointer" aria-label="Close menu"><i class="uil uil-list-ui-alt"></i></button>
-        </section><hr class="text-[gray] mb-5">
-        <ul id="items" class="text-white flex flex-col overflow-hidden justify-center items-center gap-8">
-            <li class="cursor-pointer flex flex-row items-center gap-2"><button data-nav="search" class="nav-item cursor-pointer" aria-label="Search"><i class="uil uil-search text-2xl"></i></button>
-                <input class="overflow-hidden w-36 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:border-white text-lg font-normal p-1 [&::-webkit-search-cancel-button]:hidden" id="search" type="search" placeholder="Search..." autocomplete="off"></li>
-            <li><button data-nav="movies" class="nav-item active cursor-pointer flex flex-row items-center gap-5"><i class="uil uil-film text-2xl"></i><p class="label text-md">Movies</p></button></li>
-            <li><button data-nav="favorites" class="nav-item cursor-pointer flex flex-row items-center gap-5"><i class="uil uil-star text-2xl"></i><p class="label">Favorites</p></button></li>
-            <li><button data-nav="profile" class="nav-item cursor-pointer flex flex-row items-center gap-5"><i class="uil uil-user text-2xl"></i><p class="label">Profile</p></button></li>
+        <aside id="asides" class="aside fixed top-0 left-0 z-40 h-screen py-5 bg-[#131313] overflow-x-hidden overflow-y-auto">
+        <section class="aside-head flex items-center gap-3 px-3 mb-5">
+           <h1 class="text-[red] font-extrabold text-lg whitespace-nowrap">REELSPOT</h1>
+            <button id="closeBtn" class="text-white text-2xl w-10 h-10 shrink-0 rounded-lg flex items-center justify-center cursor-pointer hover:bg-white/10" aria-label="Toggle menu" aria-expanded="false"><i class="uil uil-bars"></i></button>
+        </section><hr class="text-[gray] mx-3 mb-5">
+        <ul id="items" class="text-white flex flex-col gap-2 px-3">
+            <li><label data-nav="search" for="search" class="nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Search"><i class="uil uil-search text-2xl"></i>
+                <input class="min-w-0 flex-1 bg-transparent border-0 border-b border-gray-300 focus:outline-none focus:border-white text-base font-normal p-1 [&::-webkit-search-cancel-button]:hidden" id="search" type="search" placeholder="Search..." autocomplete="off" aria-label="Search movies"></label></li>
+            <li><button data-nav="movies" class="nav-item active w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Movies"><i class="uil uil-film text-2xl"></i><p class="label">Movies</p></button></li>
+            <li><button data-nav="favorites" class="nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Favorites"><i class="uil uil-star text-2xl"></i><p class="label">Favorites</p></button></li>
+            <li><button data-nav="profile" class="nav-item w-full flex items-center gap-4 rounded-lg px-3 py-3 cursor-pointer hover:bg-white/10" title="Profile"><i class="uil uil-user text-2xl"></i><p class="label">Profile</p></button></li>
         </ul>
     </aside>
 
-    <main class="flex-1 min-w-0">
+    <main class="flex-1 min-w-0 md:ml-[6.25rem]">
         <section id="hero" class="header-movie relative">
             <img id="heroImg" class="w-full h-100 md:h-screen object-cover object-top md:brightness-40" src="./img/getout movie.webp" alt="Get Out">
             <section class="bg-[#131313] md:absolute md:inset-x-0 md:top-0 md:bg-transparent h-auto py-10 px-6 sm:px-8 md:py-15 flex justify-between gap-10">
@@ -111,5 +111,5 @@
     </div>
 
 </body>
-    <script src="./reelspot.js?v=2"></script>
+    <script src="./reelspot.js?v=3"></script>
 </html>

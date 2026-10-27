@@ -1,23 +1,29 @@
+/* Desktop: a collapsed icon rail that expands over the page */
 #asides{
     width: 6.25rem;
-    transition: width 0.3s linear, transform 0.3s linear;
+    transition: width 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 #asides.open-aside{
     width: 15rem;
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.6);
 }
 
-#search{
+/* Collapsed: logo above the toggle, icons centred */
+.aside-head{
+    flex-direction: column;
+}
+#asides.open-aside .aside-head{
+    flex-direction: row;
+    justify-content: space-between;
+}
+#asides:not(.open-aside) .nav-item{
+    justify-content: center;
+}
+
+#search,.label{
     display: none;
 }
-#asides.open-aside #search{
-    display: block;
-}
-#closeBtn,.label{
-    display: none;
-}
-#asides.open-aside #closeBtn{
-    display: flex;
-}
+#asides.open-aside #search,
 #asides.open-aside .label{
     display: block;
 }
@@ -36,6 +42,7 @@
 
 .nav-item.active{
     color: #FF4E4E;
+    background: rgba(255, 78, 78, 0.12);
 }
 
 .fav-btn.is-fav{
